@@ -30,9 +30,9 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void comment(Long id, Book book) {
-        findById(id);
-        book.setId(id);
+    public void comment(Long id, String note) {
+        Book book = findById(id);
+        book.setNote(note);
         bookRepository.save(book);
     }
 

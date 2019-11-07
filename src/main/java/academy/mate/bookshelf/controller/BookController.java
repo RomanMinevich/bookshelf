@@ -1,6 +1,7 @@
 package academy.mate.bookshelf.controller;
 
 import java.util.List;
+import javax.validation.Valid;
 import academy.mate.bookshelf.dto.BookDto;
 import academy.mate.bookshelf.entity.Book;
 import academy.mate.bookshelf.service.BookService;
@@ -32,13 +33,13 @@ public class BookController {
     }
 
     @PostMapping
-    public void add(@RequestBody BookDto bookDto) {
+    public void add(@Valid @RequestBody BookDto bookDto) {
         bookService.add(new Book(bookDto));
     }
 
     @PutMapping("/{id}")
     public void comment(@PathVariable Long id, @RequestBody BookDto bookDto) {
-        bookService.comment(id, new Book(bookDto));
+        bookService.comment(id, bookDto.getNote());
     }
 
     @DeleteMapping("/{id}")
