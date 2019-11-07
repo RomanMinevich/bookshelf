@@ -1,4 +1,4 @@
-package academy.mate.mybookshelf;
+package academy.mate.bookshelf;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
