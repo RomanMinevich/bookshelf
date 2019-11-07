@@ -1,16 +1,15 @@
 package academy.mate.bookshelf.dto;
 
 import javax.validation.constraints.NotEmpty;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Data
+@AllArgsConstructor
 public class BookDto {
+    @NotEmpty
     private final String title;
+    @NotEmpty
     private final String author;
     private String note;
-
-    public BookDto(@NotEmpty String title, @NotEmpty String author) {
-        this.title = title;
-        this.author = author;
-    }
 }

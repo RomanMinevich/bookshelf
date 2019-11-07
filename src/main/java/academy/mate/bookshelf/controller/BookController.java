@@ -26,25 +26,23 @@ public class BookController {
         return bookService.showAll();
     }
 
-    @GetMapping("/find")
+    @GetMapping("/book")
     public Book findByTitle(@RequestParam String title) {
         return bookService.findByTitle(title);
     }
 
     @PostMapping
     public void add(@RequestBody BookDto bookDto) {
-        bookService.add(new Book(bookDto.getTitle(), bookDto.getAuthor()));
+        bookService.add(new Book(bookDto));
     }
 
-    @PutMapping("/{id}/comment")
-    public void comment(@PathVariable Long id, @RequestParam String note) {
-        Book book = bookService.findById(id);
-        book.setTitle(note);
-        bookService.add(book);
+    @PutMapping("/{id}")
+    public void comment(@PathVariable Long id, @RequestBody BookDto bookDto) {
+        bookService.comment(id, new Book(bookDto));
     }
 
     @DeleteMapping("/{id}")
     public void remove(@PathVariable Long id) {
-        bookService.remove(bookService.findById(id));
+        bookService.remove(id);
     }
 }

@@ -7,13 +7,11 @@ public interface BookService {
 
     List<Book> showAll();
 
-    Book findById(Long id);
-
     Book findByTitle(String title);
 
     void add(Book book);
 
-    Book comment(Book book);
+    void comment(Long id, Book book);
 
-    void remove(Book book);
+    void remove(Long id);
 }

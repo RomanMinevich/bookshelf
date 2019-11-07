@@ -18,12 +18,6 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book findById(Long id) {
-        return bookRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Wrong ID!"));
-    }
-
-    @Override
     public Book findByTitle(String title) {
         return bookRepository.findByTitle(title)
                 .orElseThrow(() -> new EntityNotFoundException(
@@ -36,12 +30,19 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book comment(Book book) {
-        return bookRepository.save(book);
+    public void comment(Long id, Book book) {
+        findById(id);
+        book.setId(id);
+        bookRepository.save(book);
     }
 
     @Override
-    public void remove(Book book) {
-        bookRepository.delete(book);
+    public void remove(Long id) {
+        bookRepository.deleteById(id);
+    }
+
+    private Book findById(Long id) {
+        return bookRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Wrong ID!"));
     }
 }
