@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/shelf")
+@RequestMapping("/book")
 public class BookController {
     @Autowired
     private BookService bookService;
@@ -27,14 +27,14 @@ public class BookController {
         return bookService.showAll();
     }
 
-    @GetMapping("/book")
+    @GetMapping("/")
     public Book findByTitle(@RequestParam String title) {
         return bookService.findByTitle(title);
     }
 
     @PostMapping
     public void add(@Valid @RequestBody BookDto bookDto) {
-        bookService.add(new Book(bookDto));
+        bookService.add(new Book(bookDto.getTitle(), bookDto.getAuthor(), bookDto.getNote()));
     }
 
     @PutMapping("/{id}")

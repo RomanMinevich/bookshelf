@@ -25,14 +25,9 @@ public class Book {
     @Column(length = 1500)
     private String note;
 
-    public Book(String title, String author) {
+    public Book(String title, String author, String note) {
         this.title = title;
         this.author = author;
-    }
-
-    public Book(BookDto bookDto) {
-        this.title = bookDto.getTitle();
-        this.author = bookDto.getAuthor();
-        this.note = bookDto.getNote();
+        this.note = note;
     }
 }

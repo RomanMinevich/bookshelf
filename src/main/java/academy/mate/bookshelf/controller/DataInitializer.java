@@ -13,8 +13,8 @@ public class DataInitializer {
 
     @PostConstruct
     public void add() {
-        bookService.add(new Book("Demons", "Fyodor Dostoevsky"));
-        bookService.add(new Book("Angels & Demons", "Den Brown"));
+        bookService.add(new Book("Demons", "Fyodor Dostoevsky", "Best Russian novel"));
+        bookService.add(new Book("Angels & Demons", "Den Brown", null));
     }
 
 }
